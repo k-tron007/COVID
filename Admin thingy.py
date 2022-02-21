@@ -1,21 +1,26 @@
 df=pd.read_csv("Covid19.csv")
 cov = pd.DataFrame(df, columns=["DATE","ACTIVE",
 "RECOVERED","CONFIRMED","DEATHS"])
+adf=pd.read_csv('Restricted\\Altered_data.csv')
+ddf=pd.read_csv('Restricted\\Deleted_data.csv')
+ad=pd.DataFrame(adf, columns=["DATE","I-ACTIVE","F-ACTIVE","I-RECOVERED","F-RECOVERED","I-CONFIRMED","F-CONFIRMED","I-DEATHS","F-DEATHS","ALTERED ON"])
+dd=pd.DataFrame(ddf, columns=["DATE","ACTIVE","RECOVERED","CONFIRMED","DEATHS","DELETED ON"])
+
 ch='y'
 while ch=='y' or ch=='Y':
                 print("\nMain Menu")
                 print("\n1.Fetch Data")
                 print("2.Dataframe Statistics")
                 print("3.Display Records")
-                # print("4.Search specific row/column")
                 print("4.Data Visualization")
                 print("5.Data analytics")
-                print("6.Exit")
+                print("6.Digital Footprint")
+                print("7.Exit")
                 
                 ch1=input("\nEnter your choice")
                 
                 if ch1==str(1):
-                    print("\n DISPLAYING DAILY SPIKES IN COVID CASES IN THE MONTH OF AUG AND SEP 2020")
+                    print("\n DISPLAYING DAILY SPIKES IN COVID CASES")
                     print("=============================")
                     print(cov.to_string(index=False))
                     input("\nPress Enter to go back")
@@ -222,6 +227,32 @@ while ch=='y' or ch=='Y':
 
                         elif ch6==str(9):
                             break
-                        
+
                 elif ch1==str(6):
+                    while True:
+                        print("\nDIGITAL FOOTPRINT MENU")
+                        print("\n1. Altered data")
+                        print("2. Deleted data")
+                        print("3. Exit")
+                        dfm=input("Enter your choice: ")
+
+                        if dfm==str(1):
+                            print("\nALTERED DATA")
+                            print(ad.to_string(index=False))
+                            print("End of data")
+                            input("Press Enter to exit")
+                            pass
+                        elif dfm==str(2):
+                            print("\nDELETED DATA")
+                            print(dd.to_string(index=False))
+                            print("End of data")
+                            input("Press Enter to exit")
+                            pass
+                        elif dfm==str(3):
+                            break
+                        else:
+                            print("Invalid input!")
+                            pass
+                        
+                elif ch1==str(7):
                     break
